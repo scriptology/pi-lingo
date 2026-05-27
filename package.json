@@ -7,7 +7,7 @@
   "author": "Andrey",
   "repository": {
     "type": "git",
-    "url": "https://github.com/andrey/pi-lingo.git"
+    "url": "https://github.com/scriptology/pi-lingo.git"
   },
   "files": [
     "extensions/",
@@ -16,7 +16,8 @@
     "package.json"
   ],
   "pi": {
-    "extensions": ["./extensions/index.ts"]
+    "extensions": ["./extensions/index.ts"],
+    "image": "https://raw.githubusercontent.com/scriptology/pi-lingo/main/pi-lingo-logo.png"
   },
   "peerDependencies": {
     "@earendil-works/pi-coding-agent": "*",
