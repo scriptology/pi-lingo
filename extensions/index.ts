@@ -56,19 +56,15 @@ function normalizeBCP47(tag: string): string {
 }
 
 function buildTranslationPrompt(text: string, lang: string): string {
-  return `Translate the following text into ${lang}. Respond ONLY with the three variants below. Do not add introductions, explanations, or notes.
+  return `Translate the following text into ${lang}. Respond ONLY with the three variants below. Do not add introductions, explanations, notes, or horizontal rules.
 
 *Formal*
 
 <translation here>
 
----
-
 *Natural*
 
 <translation here>
-
----
 
 *Informal*
 
@@ -112,12 +108,11 @@ function parseTranslationResponse(text: string): { formal: string; natural: stri
     const end = i < sections.length - 1 ? sections[i + 1].idx : text.length;
     let content = text.slice(start, end).trim();
 
-    // Strip stray code-block fences and horizontal-rule separators
+    // Strip stray code-block fences and horizontal-rule separators anywhere in the content
     content = content
       .replace(/^```(?:\w*)?\n?/, "")
       .replace(/```\s*$/, "")
-      .replace(/^(---+\s*)+/, "")
-      .replace(/(\s*---+)+\s*$/, "")
+      .replace(/\n?---+\s*\n?/g, "\n")
       .trim();
 
     result[sec.name] = content;
@@ -135,13 +130,9 @@ function formatTranslationOutput(parsed: { formal: string; natural: string; info
 
 ${parsed.formal}
 
----
-
 *Natural*
 
 ${parsed.natural}
-
----
 
 *Informal*
 
