@@ -1,11 +1,11 @@
 import type { ExtensionAPI, ExtensionContext } from "@earendil-works/pi-coding-agent";
-import { loadConfig, saveConfig, type LingoConfig } from "./config.js";
+import { loadConfig, saveConfig, createState, type LingoState } from "./config.js";
 import { isValidBCP47, normalizeBCP47 } from "./bcp47.js";
 import { buildTranslationPrompt } from "./prompt.js";
 import { extractTextContent, formatTranslationOutput, parseTranslationResponse } from "./parser.js";
 
 export default function lingoExtension(pi: ExtensionAPI) {
-  const config = loadConfig();
+  const config = createState(loadConfig());
   let activeTranslationTurn = false;
 
   function updateStatus(ctx: ExtensionContext) {
@@ -47,7 +47,7 @@ export default function lingoExtension(pi: ExtensionAPI) {
       }
 
       config.targetLanguage = normalizeBCP47(trimmed);
-      saveConfig(config);
+      saveConfig({ targetLanguage: config.targetLanguage });
       ctx.ui.notify(`Target language set to: ${config.targetLanguage}`, "info");
       updateStatus(ctx);
     },
@@ -73,7 +73,7 @@ export default function lingoExtension(pi: ExtensionAPI) {
         config.isActive = !config.isActive;
       }
 
-      saveConfig(config);
+      saveConfig({ targetLanguage: config.targetLanguage });
       updateStatus(ctx);
       ctx.ui.notify(
         config.isActive

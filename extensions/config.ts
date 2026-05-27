@@ -4,6 +4,10 @@ import { join } from "node:path";
 
 export interface LingoConfig {
   targetLanguage: string;
+}
+
+export interface LingoState {
+  targetLanguage: string;
   isActive: boolean;
 }
 
@@ -22,17 +26,20 @@ export function loadConfig(): LingoConfig {
         targetLanguage: typeof data.targetLanguage === "string" && data.targetLanguage
           ? data.targetLanguage
           : "en",
-        isActive: !!data.isActive,
       };
     } catch {
       // ignore parse errors, fallback to defaults
     }
   }
-  return { targetLanguage: "en", isActive: false };
+  return { targetLanguage: "en" };
 }
 
 export function saveConfig(cfg: LingoConfig): void {
   const dir = getAgentDir();
   mkdirSync(dir, { recursive: true });
   writeFileSync(getConfigPath(), JSON.stringify(cfg, null, 2), "utf-8");
+}
+
+export function createState(config: LingoConfig): LingoState {
+  return { targetLanguage: config.targetLanguage, isActive: false };
 }
