@@ -5,6 +5,10 @@
   "keywords": ["pi-package", "translation", "i18n", "language", "lingo"],
   "license": "MIT",
   "author": "Andrey",
+  "homepage": "https://github.com/scriptology/pi-lingo#readme",
+  "bugs": {
+    "url": "https://github.com/scriptology/pi-lingo/issues"
+  },
   "repository": {
     "type": "git",
     "url": "https://github.com/scriptology/pi-lingo.git"
