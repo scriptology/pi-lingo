@@ -34,7 +34,7 @@ Or add to your project's `.pi/settings.json`:
 
 - **Toggle mode** — Turn translation on/off mid-session without restarting Pi
 - **Three variants** — Every translation returns Formal, Natural, and Informal versions
-- **BCP 47 language tags** — Supports `en`, `en-GB`, `ru`, `zh-Hans`, `pt-BR`, and any valid IETF language tag
+- **BCP 47 language tags** — Supports `en`, `en-GB`, `es`, `zh-Hans`, `pt-BR`, and any valid IETF language tag
 - **Persistent config** — Target language and mode state survive across sessions
 - **Status indicator** — Shows `lingo:en` (or your language) in the footer when active
 
@@ -49,19 +49,15 @@ Enable translation mode:
 Type any text and Pi translates it automatically:
 
 ```
-> Привет, как дела?
+> Hola, ¿cómo estás?
 
 *Formal*
 
-Greetings, how are you?
-
----
+Hello, how are you?
 
 *Natural*
 
-Hello, how are you doing?
-
----
+Hi, how's it going?
 
 *Informal*
 
@@ -83,7 +79,7 @@ Disable when you want normal Pi behavior:
 Enter any valid BCP 47 tag, for example:
 - `en` — English (generic)
 - `en-GB` — British English
-- `ru` — Russian
+- `es` — Spanish
 - `de` — German
 - `zh-Hans` — Simplified Chinese
 - `fr-CA` — Canadian French
@@ -97,7 +93,7 @@ Invalid tags are rejected with an error message.
 
 ## How It Works
 
-When translation mode is active, the extension intercepts your input via Pi's `input` event and transforms it into a structured translation prompt. The LLM responds with three variants, which the extension reformats into clean markdown with `---` separators and italic headers.
+When translation mode is active, the extension intercepts your input via Pi's `input` event and transforms it into a structured translation prompt. The LLM responds with three variants, which the extension reformats into clean markdown with italic headers.
 
 The extension does **not** add tools to the LLM context — everything happens transparently through prompt transformation, so there is no extra token overhead when the mode is off.
 

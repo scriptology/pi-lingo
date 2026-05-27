@@ -161,7 +161,7 @@ export default function lingoExtension(pi: ExtensionAPI) {
       }
 
       const input = await ctx.ui.input(
-        "Target language (BCP 47, e.g. en, en-GB, ru, zh-Hans):",
+        "Target language (BCP 47, e.g. en, en-GB, es, zh-Hans):",
         config.targetLanguage
       );
 
