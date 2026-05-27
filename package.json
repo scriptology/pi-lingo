@@ -1,10 +1,10 @@
 {
   "name": "pi-lingo",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "description": "Translation extension for Pi — toggle mode with three variants: Formal, Natural, Informal",
   "keywords": ["pi-package", "translation", "i18n", "language", "lingo"],
   "license": "MIT",
-  "author": "Andrey",
+  "author": "Scriptology",
   "homepage": "https://github.com/scriptology/pi-lingo#readme",
   "bugs": {
     "url": "https://github.com/scriptology/pi-lingo/issues"
