@@ -1,6 +1,6 @@
 {
   "name": "pi-lingo",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "Translation extension for Pi — toggle mode with three variants: Formal, Natural, Informal",
   "keywords": ["pi-package", "translation", "i18n", "language", "lingo"],
   "license": "MIT",
