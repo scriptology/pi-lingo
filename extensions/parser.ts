@@ -40,6 +40,13 @@ export function parseTranslationResponse(text: string): { formal: string; natura
       .replace(/\n?---+\s*\n?/g, "\n")
       .trim();
 
+    // Remove lines that are only dashes, asterisks, underscores, or whitespace
+    content = content
+      .split("\n")
+      .filter((line) => !/^[\s\-*_]+$/.test(line))
+      .join("\n")
+      .trim();
+
     result[sec.name] = content;
   }
 
